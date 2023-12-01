@@ -1,0 +1,54 @@
+.user-container{
+  height: 75px;
+  border: 1px solid #d2cfcf ;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 16px;
+  color: #888888;
+  gap: 15px;
+  padding: 0 20px;
+}
+
+.user-container-heading{
+  height: 50px;
+  margin-top: 25px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  font-size: 18px;
+  color: #333333;
+
+}
+
+.display-page-user-name{
+  all:unset;
+  width: 250px;
+}
+
+.display-page-user-email{
+  width: 400px;
+}
+
+.display-page-user-role{
+  width: 150px;
+}
+
+.display-page-actions{
+  width: 200px;
+  display: flex;
+  gap: 10px;
+}
+
+.display-page-edit-icon{
+  border: 1.5px solid #d2cfcf;
+  padding: 8px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.display-page-delete-icon{
+  color: #ff0000;
+  border: 1.5px solid #d2cfcf;
+  padding: 8px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
