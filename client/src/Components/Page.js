@@ -27,9 +27,7 @@ const Page = ({
         <input
           className="select"
           type="checkbox"
-          name=""
-          id=""
-          onClick={(e) => toggleSelectAll(e)}
+          onChange={(e) => toggleSelectAll(e)}
           checked={selected.length === displayData.length}
         />
         <h3 className="user-name">Name</h3>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import "../CSS/SearchBar.css";
+import "../App.css";
 
-const SearchBar = ({ users, setData }) => {
+const SearchBar = ({ users, setCopyData }) => {
   const [searchValue, setSearchValue] = useState("");
 
   const filterEntries = (e) => {
@@ -21,7 +21,7 @@ const SearchBar = ({ users, setData }) => {
       );
     });
 
-    setData(filteredData);
+    setCopyData(filteredData);
   };
 
   return (
@@ -30,7 +30,7 @@ const SearchBar = ({ users, setData }) => {
       type="text"
       onChange={filterEntries}
       value={searchValue}
-      placeholder="Enter Value..."
+      placeholder="Search using user name, role or email"
     />
   );
 };

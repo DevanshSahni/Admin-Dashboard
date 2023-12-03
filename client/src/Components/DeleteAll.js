@@ -10,15 +10,13 @@ const DeleteAll = ({ users, setUsers, selected, setSelected }) => {
   };
 
   return (
-    <div>
-      <button
-        className="delete-selected"
-        disabled={!selected.length}
-        onClick={() => deleteSelected()}
-      >
-        <AiOutlineDelete />
-      </button>
-    </div>
+    <button
+      className="delete-selected"
+      disabled={!selected.length}
+      onClick={() => deleteSelected()}
+    >
+      <AiOutlineDelete />
+    </button>
   );
 };
 

@@ -34,7 +34,7 @@ const UserContainer = ({ user, setUsers, users, selected, setSelected }) => {
 
   const toggleSelect = (id) => {
     if (selected.includes(id)) {
-      setSelected(selected.filter((userID) => userID != id));
+      setSelected(selected.filter((userID) => userID !== id));
     } else {
       setSelected([...selected, id]);
     }
@@ -52,7 +52,7 @@ const UserContainer = ({ user, setUsers, users, selected, setSelected }) => {
         type="checkbox"
         name=""
         id=""
-        onClick={() => toggleSelect(user.id)}
+        onChange={() => toggleSelect(user.id)}
         checked={selected.includes(user.id)}
       />
       <input
@@ -84,15 +84,15 @@ const UserContainer = ({ user, setUsers, users, selected, setSelected }) => {
       />
 
       <div className="user-actions">
-        <div
+        <button
           className="edit action"
           onClick={() => (edit ? editUser() : saveUser())}
         >
           {edit ? <FiEdit /> : <CiSaveUp2 />}
-        </div>
-        <div className="delete action" onClick={() => deleteUser(user.id)}>
+        </button>
+        <button className="delete action" onClick={() => deleteUser(user.id)}>
           <AiOutlineDelete />
-        </div>
+        </button>
       </div>
     </div>
   );

@@ -22,16 +22,14 @@ function App() {
     setTotalPages(Math.ceil(copyData.length / 10));
   }, [copyData]);
 
-  useEffect(()=>{
-    totalPages ? setPageNumber(Math.min(pageNumber,totalPages)):<></>
-  }, [totalPages])
+  useEffect(() => {
+    totalPages && setPageNumber(Math.min(pageNumber, totalPages)) ;
+  }, [totalPages]);
 
-  useEffect(()=>{
-    setStartIndex(pageNumber*10-10)
-    setEndIndex(pageNumber*10-1)
-  }, [pageNumber])
-
-
+  useEffect(() => {
+    setStartIndex(pageNumber * 10 - 10);
+    setEndIndex(pageNumber * 10 - 1);
+  }, [pageNumber]);
 
   useEffect(() => {
     const getData = async () => {
@@ -57,26 +55,31 @@ function App() {
         setSelected={setSelected}
       />
 
-      <SearchBar users={users} setData={setCopyData} />
+      <SearchBar users={users} setCopyData={setCopyData} />
 
-      <Page
-        key={0}
-        copyData={copyData}
-        users={users}
-        setUsers={setUsers}
-        startIndex={startIndex}
-        endIndex={endIndex}
-        selected={selected}
-        setSelected={setSelected}
-      />
+      {copyData.length ? (
+        <Page
+          copyData={copyData}
+          users={users}
+          setUsers={setUsers}
+          startIndex={startIndex}
+          endIndex={endIndex}
+          selected={selected}
+          setSelected={setSelected}
+        />
+      ) : (
+        <h2>No user found.</h2>
+      )}
 
-      <Navigation
-        setStartIndex={setStartIndex}
-        setEndIndex={setEndIndex}
-        pageNumber={pageNumber}
-        setPageNumber={setPageNumber}
-        totalPages={totalPages}
-      />
+      {copyData.length ? (
+        <Navigation
+          setStartIndex={setStartIndex}
+          setEndIndex={setEndIndex}
+          pageNumber={pageNumber}
+          setPageNumber={setPageNumber}
+          totalPages={totalPages}
+        />
+      ) : null}
     </div>
   );
 }
