@@ -2,6 +2,7 @@ import "./App.css";
 import { useEffect, useState } from "react";
 import SearchBar from "./Components/SearchBar";
 import Page from "./Components/Page";
+import DeleteAll from "./Components/DeleteAll";
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -9,6 +10,7 @@ function App() {
   const [pageNumber, setPageNumber] = useState(1);
   const [startIndex, setStartIndex] = useState(0);
   const [endIndex, setEndIndex] = useState(9);
+  const [selected, setSelected] = useState([]);
 
   useEffect(() => {
     setCopyData([...users]);
@@ -34,6 +36,13 @@ function App() {
 
   return (
     <div className="admin-dashboard">
+      <DeleteAll
+        users={users}
+        setUsers={setUsers}
+        selected={selected}
+        setSelected={setSelected}
+      />
+
       <SearchBar users={users} setData={setCopyData} />
 
       <Page
@@ -43,6 +52,8 @@ function App() {
         setUsers={setUsers}
         startIndex={startIndex}
         endIndex={endIndex}
+        selected={selected}
+        setSelected={setSelected}
       />
     </div>
   );

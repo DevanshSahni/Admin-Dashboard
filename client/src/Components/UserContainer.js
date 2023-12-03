@@ -4,7 +4,7 @@ import { FiEdit } from "react-icons/fi";
 import { CiSaveUp2 } from "react-icons/ci";
 import "../CSS/Page.css";
 
-const UserContainer = ({ user, setUsers, users, selected, setSelected}) => {
+const UserContainer = ({ user, setUsers, users, selected, setSelected }) => {
   const [edit, setEdit] = useState(true);
   const [name, setName] = useState(user.name);
   const [email, setEmail] = useState(user.email);
