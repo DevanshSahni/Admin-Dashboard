@@ -3,11 +3,13 @@ import { useEffect, useState } from "react";
 import SearchBar from "./Components/SearchBar";
 import Page from "./Components/Page";
 import DeleteAll from "./Components/DeleteAll";
+import Navigation from "./Components/Navigation";
 
 function App() {
   const [users, setUsers] = useState([]);
   const [copyData, setCopyData] = useState([...users]);
   const [pageNumber, setPageNumber] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
   const [startIndex, setStartIndex] = useState(0);
   const [endIndex, setEndIndex] = useState(9);
   const [selected, setSelected] = useState([]);
@@ -16,8 +18,20 @@ function App() {
     setCopyData([...users]);
   }, [users]);
 
-  // setStartIndex(pageNumber*10-10)
-  // setEndIndex(pageNumber*10-1)
+  useEffect(() => {
+    setTotalPages(Math.ceil(copyData.length / 10));
+  }, [copyData]);
+
+  useEffect(()=>{
+    totalPages ? setPageNumber(Math.min(pageNumber,totalPages)):<></>
+  }, [totalPages])
+
+  useEffect(()=>{
+    setStartIndex(pageNumber*10-10)
+    setEndIndex(pageNumber*10-1)
+  }, [pageNumber])
+
+
 
   useEffect(() => {
     const getData = async () => {
@@ -54,6 +68,14 @@ function App() {
         endIndex={endIndex}
         selected={selected}
         setSelected={setSelected}
+      />
+
+      <Navigation
+        setStartIndex={setStartIndex}
+        setEndIndex={setEndIndex}
+        pageNumber={pageNumber}
+        setPageNumber={setPageNumber}
+        totalPages={totalPages}
       />
     </div>
   );

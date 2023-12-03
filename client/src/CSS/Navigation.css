@@ -1,0 +1,32 @@
+.navigation{
+  position: absolute;
+  right: 0px;
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+}
+
+.navigation-container{
+  display: flex;
+  gap: 10px;
+  margin-left: 30px
+}
+
+.navigate-button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: #f8f8f8;
+  border: 1.5px solid #d2cfcf;
+  padding: 5px 5px;
+  width: 25px;
+  height: 25px;
+  border-radius: 5px;
+  color: #333333;
+  box-shadow: 1px 1px;
+}
+
+.navigate-button:disabled{
+  opacity: 0.5;
+}
