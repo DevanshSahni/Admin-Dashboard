@@ -4,6 +4,7 @@ import "../App.css";
 const SearchBar = ({ users, setCopyData }) => {
   const [searchValue, setSearchValue] = useState("");
 
+  // Filter data based on search query
   const filterEntries = (e) => {
     setSearchValue(e.target.value);
 

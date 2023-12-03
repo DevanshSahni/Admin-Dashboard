@@ -4,8 +4,12 @@ import "../CSS/Navigation.css";
 
 
 const Navigation = ({ setStartIndex, setEndIndex, pageNumber, setPageNumber, totalPages }) => {
-  const arr=Array.from({length: Math.min(totalPages,5)},(v,i)=> pageNumber>5? pageNumber-(5-i):i);
+  // Show maximum of only 5 pages button in navigation to avoid crowding
+  const arr = Array.from({ length: Math.min(totalPages, 5) }, (v, i) =>
+    pageNumber > 5 ? pageNumber - (5 - i) : i
+  );
 
+  // Navigate to different pages
   const jumpPage= (page) =>{
     setPageNumber(page);
     setStartIndex(page*10-10)

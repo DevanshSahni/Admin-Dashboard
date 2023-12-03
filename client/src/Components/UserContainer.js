@@ -10,16 +10,19 @@ const UserContainer = ({ user, setUsers, users, selected, setSelected }) => {
   const [email, setEmail] = useState(user.email);
   const [role, setRole] = useState(user.role);
 
+  // Update user info when user is changed/deleted
   useEffect(() => {
     setEmail(user.email);
     setName(user.name);
     setRole(user.role);
   }, [user]);
 
+  // Enable editing of info
   const editUser = () => {
     setEdit(false);
   };
 
+  // Save the editted info
   const saveUser = () => {
     setEdit(true);
     user.name = name;
@@ -27,11 +30,13 @@ const UserContainer = ({ user, setUsers, users, selected, setSelected }) => {
     user.role = role;
   };
 
+  // Delete a specific user row based on user ID
   const deleteUser = (id) => {
     const updatedUsers = users.filter((Singleuser) => Singleuser.id !== id);
     setUsers(updatedUsers);
   };
 
+  // Select/deselect a single row 
   const toggleSelect = (id) => {
     if (selected.includes(id)) {
       setSelected(selected.filter((userID) => userID !== id));

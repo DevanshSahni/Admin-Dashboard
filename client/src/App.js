@@ -14,23 +14,29 @@ function App() {
   const [endIndex, setEndIndex] = useState(9);
   const [selected, setSelected] = useState([]);
 
+  // Update the copy of original database
   useEffect(() => {
     setCopyData([...users]);
   }, [users]);
 
+  // Update total pages when searching through DB or on deletion
   useEffect(() => {
     setTotalPages(Math.ceil(copyData.length / 10));
   }, [copyData]);
 
+  // Update current page number based on total pages
   useEffect(() => {
+    // If last page is deleted
     totalPages && setPageNumber(Math.min(pageNumber, totalPages)) ;
   }, [totalPages]);
 
+  // Update data to be displayed on changing page
   useEffect(() => {
     setStartIndex(pageNumber * 10 - 10);
     setEndIndex(pageNumber * 10 - 1);
   }, [pageNumber]);
 
+  // Fetch data using API call
   useEffect(() => {
     const getData = async () => {
       const response = await fetch(
@@ -41,7 +47,6 @@ function App() {
       );
       const data = await response.json();
       setUsers(data);
-      setCopyData([...data]);
     };
     getData();
   }, []);

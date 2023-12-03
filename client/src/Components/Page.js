@@ -13,6 +13,7 @@ const Page = ({
 }) => {
   const displayData = copyData.slice(startIndex, endIndex + 1);
 
+  // Select/deselect all displayed rows 
   const toggleSelectAll = (e) => {
     if (!e.target.checked) {
       setSelected([]);
