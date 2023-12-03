@@ -36,17 +36,8 @@ function App() {
     <div className="admin-dashboard">
       <SearchBar users={users} setData={setCopyData} />
 
-      <div className="user-container-heading user-container">
-        <input type="checkbox" name="" id="" />
-        <h3 className="display-page-user-name">Name</h3>
-        <h3 className="display-page-user-email">Email</h3>
-        <h3 className="display-page-user-role">Role</h3>
-        <div className="display-page-actions">
-          <h3>Actions</h3>
-        </div>
-      </div>
-
       <Page
+        key={0}
         copyData={copyData}
         users={users}
         setUsers={setUsers}
